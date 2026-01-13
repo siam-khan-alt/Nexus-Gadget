@@ -24,6 +24,54 @@ const connectDB = async () => {
   }
 };
 
+app.get('/api/items', async (req, res) => {
+  try {
+    const items = await itemsCollection.find({}).toArray();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch items' });
+  }
+});
+
+app.get('/api/items/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid item ID' });
+    }
+
+    const item = await itemsCollection.findOne({ _id: new ObjectId(id) });
+    
+    if (!item) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    res.json(item);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch item' });
+  }
+});
+
+app.post('/api/items', async (req, res) => {
+  try {
+    const itemData = req.body;
+    
+    const newItem = {
+      ...itemData,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    const result = await itemsCollection.insertOne(newItem);
+    const insertedItem = await itemsCollection.findOne({ _id: result.insertedId });
+
+    res.status(201).json(insertedItem);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to create item' });
+  }
+});
+
 app.get('/health', (req, res) => {
   res.json({ status: 'Server is running', timestamp: new Date() });
 });
