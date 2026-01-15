@@ -14,7 +14,7 @@ export default function ItemDetailPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
 
-  useEffect(() => {
+    useEffect(() => {
     fetchItem();
     const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
     setIsWishlisted(wishlist.includes(params.id));
@@ -22,7 +22,7 @@ export default function ItemDetailPage() {
 
   const fetchItem = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/items/${params.id}`);
+      const response = await fetch(`/api/items/${params.id}`);
       const data = await response.json();
       setItem(data);
     } catch (error) {
@@ -31,6 +31,7 @@ export default function ItemDetailPage() {
       setLoading(false);
     }
   };
+
 
   const toggleWishlist = () => {
     let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
