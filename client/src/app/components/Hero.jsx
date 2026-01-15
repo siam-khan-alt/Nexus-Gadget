@@ -3,8 +3,19 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
+  const [dots, setDots] = useState([]);
+  useEffect(() => {
+    const generatedDots = [...Array(30)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2,
+    }));
+    setDots(generatedDots);
+  }, []);
   return (
     <section className="relative flex items-center justify-center overflow-hidden pt-10 pb-5 bg-[var(--bg-primary)] transition-colors duration-500">
       
@@ -13,23 +24,23 @@ export default function Hero() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-500 blur-[120px] rounded-full animate-pulse" />
       </div>
 
-      <div className="absolute inset-0 z-0">
-        {[...Array(30)].map((_, i) => (
+   <div className="absolute inset-0 z-0">
+       {dots.map((dot, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-[var(--accent)] rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: dot.left,
+              top: dot.top,
             }}
             animate={{
               opacity: [0, 0.5, 0],
               scale: [0, 1.5, 0],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: dot.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: dot.delay,
             }}
           />
         ))}
@@ -58,7 +69,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -15px var(--accent)" }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-10 flex items-center justify-center gap-2 relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50"
+                className="px-10 flex items-center justify-center gap-2 relative overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50 group"
               >
                 Explore Catalog
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

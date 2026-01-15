@@ -11,7 +11,6 @@ export const authOptions = {
       async authorize(credentials) {
         const adminEmail = process.env.ADMIN_EMAIL || "admin@nexus.com";
         const adminPass = process.env.ADMIN_PASSWORD || "nexus123";
-
         if (
           credentials?.email === adminEmail &&
           credentials?.password === adminPass
@@ -27,11 +26,13 @@ export const authOptions = {
       }
     })
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/login',
   },
   session: {
     strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60,
   },
   callbacks: {
     async jwt({ token, user }) {
