@@ -58,7 +58,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -15px var(--accent)" }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-10 py-4 rounded-2xl bg-[var(--accent)] text-white font-bold text-lg transition-all flex items-center gap-3 shadow-xl"
+                className="group px-10 flex items-center justify-center gap-2 relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50"
               >
                 Explore Catalog
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -42,7 +42,7 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link href="/login" className="px-5 py-2 rounded-full bg-[var(--accent)] text-white text-sm font-bold">Login</Link>
+            <Link href="/login" className="w-full relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-2 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50 px-5">Login</Link>
           )}
 
           <button

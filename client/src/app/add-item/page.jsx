@@ -172,7 +172,7 @@ export default function AddItemPage() {
                     <input step="0.1" type="number" {...register('rating')} className="w-full px-5 py-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] outline-none" />
                   </div>
                 </div>
-                <button type="button" onClick={() => setStep(2)} className="w-full py-4 rounded-2xl bg-[var(--accent)] text-white font-bold transition-all hover:shadow-lg hover:shadow-[var(--accent)]/30">Next: Specifications</button>
+                <button type="button" onClick={() => setStep(2)} className="w-full relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50">Next: Specifications</button>
               </motion.div>
             )}
 
@@ -195,7 +195,7 @@ export default function AddItemPage() {
                 </div>
                 <div className="flex gap-4">
                   <button type="button" onClick={() => setStep(1)} className="flex-1 py-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] font-bold">Back</button>
-                  <button type="button" onClick={() => setStep(3)} className="flex-[2] py-4 rounded-2xl bg-[var(--accent)] text-white font-bold transition-all">Next: Logistics</button>
+                  <button type="button" onClick={() => setStep(3)} className="flex-[2] w-full relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50">Next: Logistics</button>
                 </div>
               </motion.div>
             )}

@@ -61,7 +61,7 @@ export default function Newsletter() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="px-8 py-4 rounded-[1.5rem] bg-[var(--accent)] text-white font-bold hover:shadow-xl hover:shadow-[var(--accent)]/30 transition-all flex items-center justify-center gap-2"
+                  className="group px-10 flex items-center justify-center gap-2 relative group overflow-hidden bg-gradient-to-r from-[var(--accent)] to-[#ec4899] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[var(--accent)]/20 hover:scale-[1.02] disabled:opacity-50"
                 >
                   <Send className="w-5 h-5" />
                   Subscribe
