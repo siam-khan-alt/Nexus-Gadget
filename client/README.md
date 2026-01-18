@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛡️ Nexus Gadget Shop
 
-## Getting Started
+**Nexus Gadget Shop** is a premium, full-stack e-commerce catalog application built with **Next.js 16** and **Express.js**. It provides a seamless experience for browsing high-end gadgets with a dedicated admin panel for inventory management.
 
-First, run the development server:
+## 🔗 Live Links
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 **Live Deployment:** [https://nexus-gadget-shop.vercel.app](https://nexus-gadget-shop.vercel.app)  
+🔗 **Backend API:** [https://nexus-gadget-shop.vercel.app/api/items](https://nexus-gadget-shop.vercel.app/api/items)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚡ Features & Brief Explanation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **7-Section Landing Page:** A comprehensive homepage featuring Hero, Trending Products, Categories, Featured Specs, User Reviews, Partners, and Newsletter.
+* **NextAuth.js Authentication:** Secure admin access using Credentials Provider. It uses JWT strategy and cookies to manage sessions.
+* **Protected Admin Route:** The `/add-item` page is restricted via Next.js Middleware. Unauthenticated users are automatically redirected to the login page.
+* **Multi-step Product Launch Form:** A clean 3-step wizard (Basic Details -> Technical Specs -> Logistics) with Zod validation to ensure data integrity before storing in MongoDB.
+* **Dynamic Product Catalog:** Fetches data from an Express API. Includes dynamic routing for individual item details based on MongoDB ObjectIDs.
+* **Toast Notifications & UI Feedback:** Uses `Sonner` for success/error messages and `framer-motion` for smooth layout transitions.
+* **Responsive Dark UI:** Built with Tailwind CSS 4, focusing on a premium dark-mode aesthetic that works on all screen sizes.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🏠 Route Summary
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Route | Access | Description |
+| :--- | :--- | :--- |
+| `/` | Public | Homepage with marketing sections. |
+| `/items` | Public | Product list with category filters. |
+| `/items/[id]` | Public | Dynamic detail page for a specific gadget. |
+| `/login` | Public | Admin login portal. |
+| `/add-item` | **Private** | Secure form to add products to the database. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔑 Mock Login Credentials
+To test the protected route and add new items:
+- **Email:** `admin@nexus.com`
+- **Password:** `nexus123`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Technologies Used
+
+- **Frontend:** Next.js 16 (App Router), Tailwind CSS 4, Framer Motion, Lucide React.
+- **Backend:** Node.js, Express.js.
+- **Database:** MongoDB Atlas.
+- **Auth:** NextAuth.js.
+
+---
+
+## 💻 Local Setup & Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/siam-khan-alt/Nexus-Gadget.git](https://github.com/siam-khan-alt/Nexus-Gadget.git)
+    npm install
+   npm run dev
+````
+
+
+ 2. **Setup Environment Variables**
+
+#### Create a .env file and add:
+```base
+NEXTAUTH_SECRET=Your secret key
+NEXT_PUBLIC_API_URL=https://nexus-gadget-shop.vercel.app
+NEXTAUTH_URL=https://nexus-gadget-shop.vercel.app 
+
+MONGODB_URI= Your mongodb uri
